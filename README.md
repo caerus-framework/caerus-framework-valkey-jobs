@@ -108,7 +108,7 @@ id, err := app.jobs.Enqueue(ctx, "email.send", []byte(`{"to":"a@b.c"}`),
 )
 ```
 
-`Enqueue` returns the job id. Scheduling knobs:
+`Enqueue` returns the job id. Scheduling options:
 
 | Option | Description |
 | --- | --- |
@@ -145,7 +145,7 @@ payload hash, so `Job.Attempts` seen by a handler is 1-based.
 | `WithPollInterval(d)` | worker poll cadence (default `500ms`) |
 | `WithBatchSize(n)` | max jobs claimed per pass (default `16`) |
 | `WithConcurrency(n)` | max concurrent handler runs (default `8`) |
-| `WithRetryPolicy(fixed, phase, max)` | retry knobs (defaults 5s / 30s / 5m) |
+| `WithRetryPolicy(fixed, phase, max)` | retry tunables (defaults 5s / 30s / 5m) |
 | `WithShutdownDrainTimeout(d)` | max time to wait for running handlers on shutdown (default `10s`) |
 | `WithValkeyName(name)` | name of the valkey peer to use (default `"valkey"`) |
 | `WithName(name)` | custom component name for multiple instances (default `"valkey-jobs"`) |
